@@ -5,17 +5,16 @@ import { SITE_TITLE } from '../consts';
 
 <header class=" p-4 sticky top-0 z-10">
 	<nav>
-		<div class="flex items-center">
-			<div class="portrait-container">
-		
-		<div class="portrait-bg"></div>
-		<img src="/assets/me.png" alt="Gutsie.dev" class="portrait" />
-	</div>
+
 		<h2><a href="/" class="text-white">{SITE_TITLE}</a></h2>
-	</div>
 		<div class="flex gap-8">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
+		</div>
+		<div class="portrait-container">
+				
+			<div class="portrait-bg"></div>
+			<img src="/assets/me.png" alt="Gutsie.dev" class="portrait" />
 		</div>
 	</nav>
 </header>
@@ -33,64 +32,73 @@ import { SITE_TITLE } from '../consts';
 </script>
 <style>
 	header {
-		transition: padding 0.3s ease-in-out;
-		height: 120px; /* Initial taller height */
-		/* Adjust padding as needed for the taller header */
-		padding-top: 1rem;
-		padding-bottom: 1rem;
+		transition: all 0.3s ease-in-out;
+		height: 120px;
+		background-color: var(--color-slate-800);
+		backdrop-filter: blur(8px);
 	}
-
+	
 	header.scrolled {
-		height: 80px; /* Scrolled, shorter height */
-		/* Adjust padding as needed for the shorter header */
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
+		height: 80px;
 	}
-
+	
 	h2 {
-		transition: margin-top 0.3s ease-in-out;
+		transition: all 0.3s ease-in-out;
 		margin: 0;
 		font-size: 1em;
-		height:1rem;
-		margin-top:.5rem;
-		.scrolled & {
-			margin-top:0;
-		}
+		line-height: 1;
+		display: flex;
+		align-items: center;
 	}
-
+	
+	header.scrolled h2 {
+		margin-top: 0;
+	}
+	
 	h2 a,
 	h2 a.active {
 		text-decoration: none;
 	}
+	
 	nav {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		height: 100%;
+		padding: 0 1rem;
 	}
 
+	nav > div {
+		display: flex;
+		align-items: center;
+		height: 100%;
+	}
+	
 	.social-links,
 	.social-links a {
 		display: flex;
 	}
+	
 	@media (max-width: 720px) {
 		.social-links {
 			display: none;
 		}
 	}
-
+	
 	.portrait-container {
 		margin-right: 1rem;
 		transition: all 0.3s ease-in-out;
 		position: relative;
 		width: 64px;
 		height: 80px;
-		border-radius:32px;
+		border-radius: 32px;
 		overflow: hidden;
-		.scrolled & {
-			height: 64px;
-		}
 	}
-
+	
+	header.scrolled .portrait-container {
+		height: 64px;
+	}
+	
 	.portrait-bg {
 		position: absolute;
 		bottom: 0;
@@ -99,9 +107,8 @@ import { SITE_TITLE } from '../consts';
 		aspect-ratio: 1;
 		background-color: var(--color-amber-400);
 		border-radius: 100%;
-		
 	}
-
+	
 	.portrait {
 		position: absolute;
 		bottom: 0;
@@ -111,6 +118,4 @@ import { SITE_TITLE } from '../consts';
 		aspect-ratio: 1;
 		max-width: unset;
 	}
-	
-	
 </style>
